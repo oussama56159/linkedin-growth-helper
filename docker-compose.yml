@@ -1,0 +1,17 @@
+version: "3.8"
+
+services:
+  linkedin-bot:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: linkedin-growth-system
+    restart: unless-stopped
+    volumes:
+      - ./config:/app/config
+      - ./storage:/app/storage
+    environment:
+      - PYTHONUNBUFFERED=1
+      - TZ=America/New_York  # Set your timezone
+    # Note: Real browser mode won't work in Docker
+    # The container will use headless Chromium instead

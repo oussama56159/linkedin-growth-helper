@@ -1,0 +1,20 @@
+# Credentials and session data — NEVER commit these
+config/settings.yaml
+storage/linkedin_session.json
+storage/*.db
+storage/logs/
+storage/telegram_offset.txt
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+env/
+
+# Playwright
+.playwright/
+
+# Docker
+.env

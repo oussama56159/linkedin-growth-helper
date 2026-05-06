@@ -1,0 +1,76 @@
+# ULTRA-SAFE STARTER CONFIGURATION
+# Copy this to settings.yaml and customize
+
+targeting:
+  keywords:
+    - "artificial intelligence"
+    - "machine learning"
+    - "software engineering"
+    # Add your niche keywords here
+
+  hashtags:
+    - "#AI"
+    - "#MachineLearning"
+    - "#SoftwareEngineering"
+    # Add your niche hashtags here
+
+  target_roles:
+    - "Software Engineer"
+    - "AI Researcher"
+    # Add your target roles here
+
+  target_industries:
+    - "Artificial Intelligence"
+    - "Software Development"
+    # Add your target industries here
+
+scoring:
+  min_post_likes: 10           # Only suggest posts with decent engagement
+  min_post_comments: 2
+  max_post_age_hours: 24       # Only recent posts
+  min_profile_connections: 100 # Only established profiles
+
+limits:
+  # START VERY LOW — ramp up gradually over weeks
+  max_likes_per_day: 5
+  max_comments_per_day: 0      # DISABLED — enable after week 2
+  max_reposts_per_day: 0       # DISABLED — enable after week 3
+  max_connections_per_day: 0   # DISABLED — highest risk, enable last
+  max_suggestions_per_run: 5
+
+scheduling:
+  active_hours_start: 10       # Mid-morning start
+  active_hours_end: 20         # Evening end
+  min_interval_minutes: 180    # 3 hours minimum between runs
+  max_interval_minutes: 360    # 6 hours maximum
+  daily_skip_probability: 0.20 # 20% chance to skip entire day
+  days_off: [5, 6]             # Skip Saturdays and Sundays
+
+delays:
+  min_action_delay: 15         # Very conservative delays
+  max_action_delay: 45
+  min_page_delay: 5
+  max_page_delay: 12
+
+browser:
+  # CRITICAL: Use real browser mode for maximum safety
+  use_real_browser: true       # ← MUST BE TRUE
+  real_browser_port: 9222
+  headless: false              # Must be false when use_real_browser=true
+
+telegram:
+  bot_token: "YOUR_TELEGRAM_BOT_TOKEN"
+  chat_id: "YOUR_TELEGRAM_CHAT_ID"
+
+email:
+  enabled: false
+
+linkedin:
+  # Only needed if use_real_browser=false (not recommended)
+  email: "your_linkedin_email@example.com"
+  password: "your_linkedin_password"
+  session_file: "storage/linkedin_session.json"
+
+storage:
+  db_path: "storage/linkedin_growth.db"
+  logs_path: "storage/logs/"

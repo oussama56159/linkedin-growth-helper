@@ -1,0 +1,81 @@
+{
+  "name": "LinkedIn Growth System",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "hours",
+              "minutesInterval": 120
+            }
+          ]
+        }
+      },
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "position": [240, 300]
+    },
+    {
+      "parameters": {
+        "command": "cd /app && python main.py --mode scrape"
+      },
+      "name": "Run Scraper",
+      "type": "n8n-nodes-base.executeCommand",
+      "position": [460, 300]
+    },
+    {
+      "parameters": {
+        "command": "cd /app && python main.py --mode poll"
+      },
+      "name": "Poll Telegram Decisions",
+      "type": "n8n-nodes-base.executeCommand",
+      "position": [680, 300]
+    },
+    {
+      "parameters": {
+        "command": "cd /app && python main.py --mode execute"
+      },
+      "name": "Execute Approved Actions",
+      "type": "n8n-nodes-base.executeCommand",
+      "position": [900, 300]
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 20 * * *"
+            }
+          ]
+        }
+      },
+      "name": "Daily Summary Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "position": [240, 500]
+    },
+    {
+      "parameters": {
+        "command": "cd /app && python main.py --mode summary"
+      },
+      "name": "Send Daily Summary",
+      "type": "n8n-nodes-base.executeCommand",
+      "position": [460, 500]
+    }
+  ],
+  "connections": {
+    "Schedule Trigger": {
+      "main": [[{"node": "Run Scraper", "type": "main", "index": 0}]]
+    },
+    "Run Scraper": {
+      "main": [[{"node": "Poll Telegram Decisions", "type": "main", "index": 0}]]
+    },
+    "Poll Telegram Decisions": {
+      "main": [[{"node": "Execute Approved Actions", "type": "main", "index": 0}]]
+    },
+    "Daily Summary Trigger": {
+      "main": [[{"node": "Send Daily Summary", "type": "main", "index": 0}]]
+    }
+  }
+}

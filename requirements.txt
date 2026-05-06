@@ -1,0 +1,15 @@
+# LinkedIn Growth System Dependencies
+# Install with: pip install -r requirements.txt
+# Then run: playwright install chromium
+
+# Browser automation
+playwright==1.44.0
+
+# HTTP requests (Telegram API)
+requests==2.32.3
+
+# Config parsing
+PyYAML==6.0.1
+
+# Optional: better logging
+colorlog==6.8.2
