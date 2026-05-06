@@ -35,6 +35,11 @@ Create a local configuration file derived from the safe template:
 2. Populate credentials and operational parameters.
 3. Keep config/settings.yaml out of version control.
 
+When using start.bat, the script reads config/settings.yaml. Update that file to change:
+- Telegram bot credentials (token, chat_id).
+- Targeting inputs (keywords, hashtags, roles).
+- Safety limits and scheduling windows.
+
 ## Installation
 Local (Python):
 1. Create and activate a virtual environment.
