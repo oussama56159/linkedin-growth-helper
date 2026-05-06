@@ -52,6 +52,9 @@ Primary entry points:
 - safety_check.py and health_check.py: operational checks.
 - run_background.py and run_with_restart.py: alternative execution modes.
 
+Windows launcher:
+- start.bat: convenience script that runs the system with recommended defaults.
+
 ## Safety and Compliance
 This project prioritizes safety with rate limits, approval gates, and session management. Users are responsible for ensuring that usage complies with LinkedIn terms of service and applicable law.
 
